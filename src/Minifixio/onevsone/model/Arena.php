@@ -70,6 +70,10 @@ class Arena{
 		
 		$player1->sendMessage(OneVsOne::getMessage("duel_against") . $player2->getName());
 		$player2->sendMessage(OneVsOne::getMessage("duel_against") . $player1->getName());
+		
+		//imjay addition
+		 $task = new GameTime(OneVsOne::getInstance(), $this);
+		$this->countdownTaskHandler = Server::getInstance()->getScheduler()->scheduleDelayedRepeatingTask($task, 20, 20);
 
 		// Create a new countdowntask
 		$task = new CountDownToDuelTask(OneVsOne::getInstance(), $this);
