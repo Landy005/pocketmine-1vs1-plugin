@@ -132,6 +132,8 @@ class Arena{
 		// Give sword, food and armor
 		$player->getInventory()->addItem(Item::get(ITEM::IRON_SWORD));
 		$player->getInventory()->addItem(Item::get(ITEM::BREAD));
+		$player->getInventory()->addItem(Item::get(ITEM::BOW));
+		$player->getInventory()->addItem(Item::get(Item::ARROW, 0, 12));
 		$player->getInventory()->setItemInHand(Item::get(ITEM::IRON_SWORD), $player);
 		
 		// Pur the armor on the player
@@ -175,6 +177,9 @@ class Arena{
    		
    		// Reset arena
    		$this->reset();
+   		// Back to gamemode 1
+   		$winner->setGamemode(1);
+   		$loser->setGamemode(1);
    }
 
    /**
@@ -218,6 +223,8 @@ class Arena{
    			$player->sendMessage(OneVsOne::getMessage("duel_timeover"));
    			$player->sendMessage(TextFormat::BOLD . "++++++++=++++++++");
    			$player->removeAllEffects();
+   			$player1->setGamemode(1);
+			$player2->setGamemode(1);
    		}
    		
    		// Reset arena
