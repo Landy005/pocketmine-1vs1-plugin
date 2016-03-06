@@ -151,8 +151,9 @@ class ArenaManager{
 		// Check that there is at least 2 players in the queue
 		if(count($this->queue) < 2){
                  Server::getInstance()->getLogger()->debug("There is not enough players to start a duel : " . count($this->queue));
-                 return
+                 return;
 		}
+		
 		// Check if there is any arena free (not active)
 		Server::getInstance()->getLogger()->debug("Check ".  count($this->arenas) . " arenas");
 		$freeArena = NULL;
